@@ -29,6 +29,10 @@ dependencies:
   intl: ^0.20.2
   # Generates native splash screens for iOS & Android automatically
   flutter_native_splash: ^2.4.7
+  # SVG image support
+  flutter_svg: ^2.2.2
+  # UI library for responsive design
+  flutter_screenutil: ^5.9.3
 
 dev_dependencies:
   flutter_test:
