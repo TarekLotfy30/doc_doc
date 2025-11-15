@@ -1,0 +1,5 @@
+package com.docdoc.doc_doc
+
+import io.flutter.embedding.android.FlutterActivity
+
+class MainActivity : FlutterActivity()
