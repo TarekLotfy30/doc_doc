@@ -1,0 +1,30 @@
+// Rotation Transition Strategy
+import 'package:flutter/material.dart';
+
+import '../../../constants/app_duration.dart';
+import '../../helpers/classes/app_logger.dart';
+import '../route_transitions_strategy.dart';
+
+class RotationTransitionStrategy implements RouteTransitionStrategy {
+  @override
+  PageRoute<T> build<T>(Widget child, RouteSettings? settings) {
+    Logger.info('🔴 Using Rotation Transition', 'APP_ROUTER');
+
+    return PageRouteBuilder<T>(
+      settings: settings,
+      transitionDuration: AppDurations.medium,
+      reverseTransitionDuration: const Duration(milliseconds: 350),
+      pageBuilder: (_, animation, _) => child,
+      transitionsBuilder: (_, animation, _, child) {
+        final rotate = Tween(
+          begin: 0.1,
+          end: 0.0.toInt().toDouble(),
+        ).animate(animation);
+        return Transform.rotate(
+          angle: rotate.value,
+          child: FadeTransition(opacity: animation, child: child),
+        );
+      },
+    );
+  }
+}
