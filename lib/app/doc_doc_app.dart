@@ -5,6 +5,7 @@ import '../core/di/register_dependencies.dart';
 import '../core/responsive/app_screen_util.dart';
 import '../core/routing/app_router.dart';
 import '../core/routing/app_routes_name.dart';
+import '../core/theme/app_theme_factory.dart';
 
 class DocDocApp extends StatelessWidget {
   const DocDocApp({super.key});
@@ -20,6 +21,7 @@ class DocDocApp extends StatelessWidget {
         onGenerateRoute: (settings) =>
             getIt<AppRouter>().generateRoute(settings),
         initialRoute: AppRoutesName.onboardingView,
+        theme: AppThemeFactory.lightTheme.materialTheme,
       ),
     );
   }

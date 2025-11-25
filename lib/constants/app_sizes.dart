@@ -41,7 +41,7 @@ abstract final class AppSizes {
   static const double buttonHeightSM = 40;
 
   /// Medium button height (48px) - Standard buttons
-  static const double buttonHeightMD = 48;
+  static const double buttonHeightMD = 52;
 
   /// Large button height (56px) - Primary CTAs
   static const double buttonHeightLG = 56;

@@ -35,9 +35,6 @@ Future<void> configureSystemUI() async {
 }
 
 /// Configures platform-specific system UI overlay styles
-///
-/// Time Complexity: O(1)
-/// Space Complexity: O(1)
 Future<void> _configurePlatformSpecificUI() async {
   const String tag = 'SystemUIConfiguration';
 
@@ -95,9 +92,6 @@ Future<void> _configureSystemOverlays() async {
 }
 
 /// Configures preferred screen orientations
-///
-/// Time Complexity: O(1)
-/// Space Complexity: O(1)
 Future<void> _configureScreenOrientation() async {
   const String tag = 'SystemUIConfiguration';
 
