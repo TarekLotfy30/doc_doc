@@ -46,7 +46,7 @@ class BaseAppTheme implements IAppThemeData {
       visualDensity: ThemeConstants.visualDensity,
       scaffoldBackgroundColor: _colors.background,
       fontFamily: AppFontFamilyEnum.inter.name,
-      pageTransitionsTheme: ThemeConstants.pageTransitionsTheme,
+      //pageTransitionsTheme: ThemeConstants.pageTransitionsTheme,
 
       // ======================== TEXT THEME ==============================
       textTheme: _buildTextTheme(),

@@ -40,24 +40,33 @@ abstract final class AppCorners {
   /// Text fields, search bars, dropdowns
   static const double input = _sm;
 
-  /// Snackbars
-  static const double snackBar = _sm;
-
   /// Standard cards and containers
   static const double card = _md;
-
-  /// Drop-down menus
-  static const double dropDownMenu = _md;
 
   /// Buttons and interactive elements
   static const double button = _lg;
 
   /// Dialogs and modal windows
-  static const double dialog = _xxl;
+  static const double dialog = _xl;
 
   /// Bottom sheets and large surfaces
-  static const double sheet = _xxxl;
+  static const double sheet = _xl;
+
+  /// Snackbars
+  static const double snackBar = _sm;
+
+  /// Drop-down menus
+  static const double dropDownMenu = _sm;
 
   /// Circular avatars and icons
   static const double circular = _full;
+
+  /// Progress Indicator
+  static const double progressIndicator = _full;
+
+  /// For circular containers holding progress indicators (e.g., loading avatars)
+  static const double progressIndicatorCircular = _full;
+
+  /// For linear progress bars
+  static const double progressIndicatorLinear = _xs; // 4dp
 }

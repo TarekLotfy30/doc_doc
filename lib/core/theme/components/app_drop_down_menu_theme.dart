@@ -1,9 +1,12 @@
+// ============================================================================
+// DROPDOWN MENU THEME
+// ============================================================================
 import 'package:flutter/material.dart';
 
-import '../../../constants/app_border_width.dart';
-import '../../../constants/app_corners.dart';
-import '../../../constants/app_elevation.dart';
-import '../../../constants/app_sizes.dart';
+import '../../constants/app_border_width.dart';
+import '../../constants/app_corners.dart';
+import '../../constants/app_elevation.dart';
+import '../../constants/app_sizes.dart';
 import '../interface/i_app_colors.dart';
 import '../interface/i_app_typography.dart';
 
@@ -15,13 +18,13 @@ abstract final class AppDropDownMenuTheme {
     IAppTypography typography,
   ) {
     return DropdownMenuThemeData(
-      //textStyle: typography.bodyMedium,
+      textStyle: typography.bodyLarge.copyWith(color: color.onSurface),
       inputDecorationTheme: InputDecorationTheme(
         border: OutlineInputBorder(
           borderRadius: BorderRadius.circular(AppCorners.dropDownMenu),
           borderSide: BorderSide(
-            color: color.outline.withValues(alpha: 0.5),
-            width: AppBorderWidth.selected,
+            color: color.outline,
+            width: AppBorderWidth.defaultWidth,
           ),
         ),
         filled: true,
@@ -34,7 +37,7 @@ abstract final class AppDropDownMenuTheme {
         enabledBorder: OutlineInputBorder(
           borderRadius: BorderRadius.circular(AppCorners.dropDownMenu),
           borderSide: BorderSide(
-            color: color.outline.withValues(alpha: 0.5),
+            color: color.outline,
             width: AppBorderWidth.defaultWidth,
           ),
         ),
@@ -61,61 +64,55 @@ abstract final class AppDropDownMenuTheme {
         ),
         disabledBorder: OutlineInputBorder(
           borderRadius: BorderRadius.circular(AppCorners.dropDownMenu),
-          borderSide: const BorderSide(
-            //color: color.outline.withValues(alpha: 0.5),
-            width: AppBorderWidth.disabled,
+          borderSide: BorderSide(
+            color: color.onSurface.withValues(alpha: 0.12),
+            width: AppBorderWidth.defaultWidth,
           ),
         ),
-        // errorStyle: typography.bodyMedium.copyWith(color: color.error),
-        // hintStyle: typography.bodyMedium.copyWith(color: color.outline),
-        // labelStyle: typography.bodyMedium.copyWith(color: color.outline),
-        // suffixStyle: typography.bodyMedium.copyWith(color: color.outline),
-        // prefixStyle: typography.bodyMedium.copyWith(color: color.outline),
-        prefixIconColor: color.outline,
-        suffixIconColor: color.outline,
+        errorStyle: typography.bodyLarge.copyWith(color: color.error),
+        hintStyle: typography.bodyLarge.copyWith(color: color.onSurfaceVariant),
+        labelStyle: typography.bodyLarge.copyWith(
+          color: color.onSurfaceVariant,
+        ),
+        suffixStyle: typography.bodyLarge.copyWith(
+          color: color.onSurfaceVariant,
+        ),
+        prefixStyle: typography.bodyLarge.copyWith(
+          color: color.onSurfaceVariant,
+        ),
+        prefixIconColor: color.onSurfaceVariant,
+        suffixIconColor: color.onSurfaceVariant,
         isCollapsed: false,
-        floatingLabelBehavior: FloatingLabelBehavior.always,
+        floatingLabelBehavior: FloatingLabelBehavior.auto,
         constraints: BoxConstraints.tight(
           const Size.fromHeight(AppSizes.buttonHeightMD),
         ),
-        // floatingLabelStyle: typography.bodyMedium.copyWith(
-        //   //color: color.outline,
-        // ),
-        hoverColor: color.onSurface.withValues(alpha: 0.1),
-        focusColor: color.onSurface.withValues(alpha: 0.1),
-        errorMaxLines: 1,
+        floatingLabelStyle: typography.bodyLarge.copyWith(color: color.primary),
+        hoverColor: color.onSurface.withValues(alpha: 0.08),
+        focusColor: color.primary.withValues(alpha: 0.12),
+        errorMaxLines: 2,
       ),
       menuStyle: MenuStyle(
         elevation: WidgetStateProperty.resolveWith((states) {
-          if (states.contains(WidgetState.pressed)) {
-            return AppElevation.dropDownMenu;
+          if (states.contains(WidgetState.disabled)) {
+            return 0;
           }
-          if (states.contains(WidgetState.hovered)) {
-            return AppElevation.dropDownMenu;
-          }
-          if (states.contains(WidgetState.focused)) {
-            return AppElevation.dropDownMenu;
-          }
-          return 0;
+          return AppElevation.dropDownMenu;
         }),
-        shape: WidgetStateProperty.resolveWith((states) {
-          if (states.contains(WidgetState.pressed)) {
-            return RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(AppCorners.dropDownMenu),
-            );
-          }
-          if (states.contains(WidgetState.hovered)) {
-            return RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(AppCorners.dropDownMenu),
-            );
-          }
-          if (states.contains(WidgetState.focused)) {
-            return RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(AppCorners.dropDownMenu),
-            );
-          }
-          return null;
-        }),
+        backgroundColor: WidgetStateProperty.all(color.surfaceContainerHigh),
+        surfaceTintColor: WidgetStateProperty.all(color.surfaceTint),
+        shadowColor: WidgetStateProperty.all(
+          color.shadow.withValues(alpha: 0.28),
+        ),
+        padding: WidgetStateProperty.all(
+          const EdgeInsets.symmetric(vertical: 8),
+        ),
+        alignment: AlignmentDirectional.bottomStart,
+        shape: WidgetStateProperty.all(
+          RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(AppCorners.dropDownMenu),
+          ),
+        ),
       ),
     );
   }

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../../../../constants/app_images.dart';
+import '../../../../core/constants/app_images.dart';
 import '../../../../core/helpers/extensions/theme_extension.dart';
 import '../../../../core/widgets/app_custom_text.dart';
 import '../../../../core/widgets/app_svg.dart';
@@ -19,7 +19,7 @@ class DocDocLogoAndText extends StatelessWidget {
         CustomText(
           data: 'Docdoc',
           textTheme: context.textTheme.displayLarge,
-          fontSize: 23,
+          fontSize: 24,
         ),
       ],
     );

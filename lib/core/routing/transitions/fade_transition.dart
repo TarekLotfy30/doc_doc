@@ -1,8 +1,8 @@
 // Fade Transition Strategy
 import 'package:flutter/material.dart';
 
-import '../../../constants/app_animation.dart';
-import '../../../constants/app_duration.dart';
+import '../../constants/app_animation.dart';
+import '../../constants/app_duration.dart';
 import '../../helpers/classes/app_logger.dart';
 import '../route_transitions_strategy.dart';
 

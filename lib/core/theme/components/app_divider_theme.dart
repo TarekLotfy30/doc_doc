@@ -1,3 +1,6 @@
+// ============================================================================
+// DIVIDER THEME
+// ============================================================================
 import 'package:flutter/material.dart';
 
 import '../interface/i_app_colors.dart';
@@ -9,8 +12,8 @@ abstract final class AppDividerTheme {
       color: color.divider,
       thickness: 1,
       space: 1,
-      indent: 16,
-      endIndent: 16,
+      indent: 0,
+      endIndent: 0,
     );
   }
 }

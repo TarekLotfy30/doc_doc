@@ -18,7 +18,7 @@ Future<void> main() async {
 
   await configureSystemUI();
   await initializeServices();
-  
+
   // Run the application
   runApp(const DocDocApp());
   Logger.info('Application started successfully', 'main');
