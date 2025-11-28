@@ -21,7 +21,7 @@ class OnboardingTitleAndDescription extends StatelessWidget {
           color: context.colorScheme.primary,
           height: 1.5,
         ),
-        SizedBox(height: 18.h),
+        const SizedBox(height: 18),
         CustomText(
           data:
               'Manage and schedule all of your medical appointments easily with Docdoc to get a new experience.',

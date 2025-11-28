@@ -8,15 +8,14 @@ class LoginView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
+    return const Scaffold(
       body: SafeArea(
         top: true,
         bottom: false,
-        child: ListView.builder(
-          itemBuilder: (context, index) => ListTile(
-            key: ValueKey('item_$index'), // <-- this
-            subtitle: const DocDocLogoAndText(),
-          ),
+        child: Column(
+          children: [
+            Hero(tag: 'DocDocLogoAndText', child: DocDocLogoAndText()),
+          ],
         ),
       ),
     );

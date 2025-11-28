@@ -11,7 +11,7 @@ class GetStartedButton extends StatelessWidget {
   Widget build(BuildContext context) {
     return ElevatedButton(
       onPressed: () async {
-        await AppNavigation.navigateToAndClearStack(
+        await AppNavigation.navigateTo(
           context,
           AppRoutesName.loginView,
         );

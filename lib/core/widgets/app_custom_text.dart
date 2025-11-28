@@ -27,7 +27,7 @@ class CustomText extends StatelessWidget {
       style: textTheme?.copyWith(
         color: color,
         fontSize: fontSize?.sp,
-        height: height,
+        height: height?.h,
       ),
     );
   }

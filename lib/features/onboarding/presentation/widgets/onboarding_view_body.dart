@@ -21,7 +21,7 @@ class OnboardingViewBody extends StatelessWidget {
           child: Column(
             children: [
               const Hero(tag: 'DocDocLogoAndText', child: DocDocLogoAndText()),
-              SizedBox(height: 40.h),
+              const SizedBox(height: 40),
               Stack(
                 clipBehavior: Clip.none,
                 children: [
@@ -38,7 +38,7 @@ class OnboardingViewBody extends StatelessWidget {
                   ),
                 ],
               ),
-              SizedBox(height: 80.h),
+              const SizedBox(height: 120),
               const Padding(
                 padding: EdgeInsets.symmetric(horizontal: 32),
                 child: GetStartedButton(),
