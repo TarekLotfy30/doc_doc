@@ -19,7 +19,7 @@ class DocDocLogoAndText extends StatelessWidget {
         CustomText(
           data: 'Docdoc',
           textTheme: context.textTheme.displayLarge,
-          fontSize: 23,
+          fontSize: 24,
         ),
       ],
     );

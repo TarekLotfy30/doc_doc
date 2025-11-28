@@ -1,5 +1,9 @@
+// ============================================================================
+// PROGRESS INDICATOR THEME
+// ============================================================================
 import 'package:flutter/material.dart';
 
+import '../../constants/app_corners.dart';
 import '../interface/i_app_colors.dart';
 
 abstract final class AppProgressIndicator {
@@ -8,10 +12,11 @@ abstract final class AppProgressIndicator {
   static ProgressIndicatorThemeData progressIndicatorTheme(IAppColors color) {
     return ProgressIndicatorThemeData(
       color: color.primary,
-      circularTrackColor: color.onPrimary,
-      linearTrackColor: color.onPrimary,
-      borderRadius: BorderRadius.circular(10),
+      circularTrackColor: color.surfaceContainerHighest,
+      linearTrackColor: color.surfaceContainerHighest,
+      borderRadius: BorderRadius.circular(AppCorners.progressIndicator),
       circularTrackPadding: const EdgeInsets.all(2),
+      linearMinHeight: 4,
       constraints: BoxConstraints.tight(const Size.fromRadius(20)),
     );
   }

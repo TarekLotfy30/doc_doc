@@ -1,5 +1,9 @@
+// ============================================================================
+// DIALOG THEME
+// ============================================================================
 import 'package:flutter/material.dart';
 
+import '../../constants/app_corners.dart';
 import '../../constants/app_elevation.dart';
 import '../interface/i_app_colors.dart';
 import '../interface/i_app_typography.dart';
@@ -13,22 +17,27 @@ abstract final class AppDialogTheme {
   ) {
     return DialogThemeData(
       elevation: AppElevation.dialog,
-      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
-      backgroundColor: color.surface,
-      titleTextStyle: typography.titleLarge.copyWith(
-        fontFamily: AppFontFamilyEnum.inter.name,
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(AppCorners.dialog),
       ),
-      // contentTextStyle: typography.bodyMedium.copyWith(
-      //   fontFamily: AppFontFamilyEnum.inter.name,
-      // ),
-      actionsPadding: const EdgeInsets.only(bottom: 16, top: 8),
+      backgroundColor: color.surface,
+      surfaceTintColor: color.surfaceTint,
+
+      titleTextStyle: typography.headlineLarge.copyWith(
+        fontFamily: AppFontFamilyEnum.inter.name,
+        color: color.onSurface,
+      ),
+      contentTextStyle: typography.bodyLarge.copyWith(
+        fontFamily: AppFontFamilyEnum.inter.name,
+        color: color.onSurfaceVariant,
+      ),
+      actionsPadding: const EdgeInsets.fromLTRB(24, 8, 24, 24),
       alignment: Alignment.center,
-      iconColor: color.onSurface,
-      //shadowColor: color.shadow,
-      surfaceTintColor: color.onPrimary,
+      iconColor: color.secondary,
+      shadowColor: color.shadow.withValues(alpha: 0.28),
       clipBehavior: Clip.antiAliasWithSaveLayer,
-      insetPadding: const EdgeInsets.all(16),
-      //barrierColor: color.shadow,
+      insetPadding: const EdgeInsets.symmetric(horizontal: 40, vertical: 24),
+      barrierColor: color.scrim.withValues(alpha: 0.32),
     );
   }
 }

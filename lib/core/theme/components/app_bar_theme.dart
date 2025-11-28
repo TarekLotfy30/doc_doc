@@ -1,3 +1,7 @@
+// ============================================================================
+// APP BAR THEME
+// ============================================================================
+
 import 'package:flutter/material.dart';
 
 import '../../constants/app_elevation.dart';
@@ -26,7 +30,7 @@ abstract final class AppBarThemes {
       ),
       actionsIconTheme: IconThemeData(color: color.onSurface),
       iconTheme: IconThemeData(color: color.onSurface),
-      //shadowColor: color.shadow,
+      systemOverlayStyle: null, // Will respect system theme
     );
   }
 }
