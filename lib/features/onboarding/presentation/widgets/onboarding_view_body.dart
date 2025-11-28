@@ -1,8 +1,12 @@
+// ignore_for_file: lines_longer_than_80_chars
+
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-import '../../../../constants/app_images.dart';
+import '../../../../core/constants/app_images.dart';
+import '../../../../core/helpers/classes/app_navigation.dart';
 import '../../../../core/helpers/extensions/theme_extension.dart';
+import '../../../../core/routing/app_routes_name.dart';
 import '../../../../core/widgets/app_custom_text.dart';
 import '../../../../core/widgets/app_svg.dart';
 import 'doc_doc_logo_and_text.dart';
@@ -20,7 +24,7 @@ class OnboardingViewBody extends StatelessWidget {
         padding: const EdgeInsets.symmetric(vertical: 32),
         child: Column(
           children: [
-            const DocDocLogoAndText(),
+            const Hero(tag: 'DocDocLogoAndText', child: DocDocLogoAndText()),
             SizedBox(height: 40.h),
             Stack(
               clipBehavior: Clip.none,
@@ -45,10 +49,10 @@ class OnboardingViewBody extends StatelessWidget {
                   ),
                   child: Image.asset(AppImages.doctor),
                 ),
-                Positioned(
-                  bottom: -133.h,
-                  left: 0,
-                  right: 0,
+                PositionedDirectional(
+                  start: 0,
+                  end: 0,
+                  top: 375.h,
                   child: Padding(
                     padding: const EdgeInsets.symmetric(horizontal: 32),
                     child: Column(
@@ -64,7 +68,6 @@ class OnboardingViewBody extends StatelessWidget {
                         SizedBox(height: 18.h),
                         CustomText(
                           data:
-                              // ignore: lines_longer_than_80_chars
                               'Manage and schedule all of your medical appointments easily with Docdoc to get a new experience.',
                           textAlign: TextAlign.center,
                           fontSize: 10,
@@ -72,16 +75,24 @@ class OnboardingViewBody extends StatelessWidget {
                           color: context.colorScheme.outline,
                           height: 1.5,
                         ),
-                        SizedBox(height: 32.h),
-                        ElevatedButton(
-                          onPressed: () {},
-                          child: const Text('Get Started'),
-                        ),
                       ],
                     ),
                   ),
                 ),
               ],
+            ),
+            SizedBox(height: 80.h),
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 32),
+              child: ElevatedButton(
+                onPressed: () async {
+                  await AppNavigation.navigateToAndClearStack(
+                    context,
+                    AppRoutesName.loginView,
+                  );
+                },
+                child: const Text('Get Started'),
+              ),
             ),
           ],
         ),

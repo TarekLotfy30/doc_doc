@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-import '../../../constants/app_border_width.dart';
-import '../../../constants/app_corners.dart';
-import '../../../constants/app_duration.dart';
+import '../../constants/app_border_width.dart';
+import '../../constants/app_corners.dart';
+import '../../constants/app_duration.dart';
 import '../interface/i_app_colors.dart';
 import '../interface/i_app_typography.dart';
 

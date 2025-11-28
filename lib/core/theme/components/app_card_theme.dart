@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-import '../../../constants/app_corners.dart';
-import '../../../constants/app_elevation.dart';
+import '../../constants/app_corners.dart';
+import '../../constants/app_elevation.dart';
 import '../interface/i_app_colors.dart';
 
 abstract final class AppCardTheme {

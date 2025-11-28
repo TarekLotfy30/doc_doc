@@ -14,8 +14,8 @@ class DocDocApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return ScreenUtilInit(
       designSize: AppScreenUtil.designSize,
-      minTextAdapt: true,
-      splitScreenMode: true,
+      // minTextAdapt: true,
+      //splitScreenMode: true,
       builder: (context, _) => MaterialApp(
         debugShowCheckedModeBanner: false,
         onGenerateRoute: (settings) =>
