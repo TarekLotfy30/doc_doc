@@ -4,7 +4,7 @@
 
 import 'package:get_it/get_it.dart';
 
-import '../helpers/classes/app_logger.dart';
+import '../../core/helpers/classes/app_logger.dart';
 import '../routing/app_router.dart';
 
 /// This global instance of GetIt provides centralized dependency management

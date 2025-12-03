@@ -74,12 +74,12 @@ abstract final class AppButtonThemes {
         alignment: Alignment.center,
         shape: WidgetStateProperty.resolveWith<OutlinedBorder>((states) {
           return RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(AppCorners.button),
+            borderRadius: BorderRadius.circular(AppCorners.button.r),
           );
         }),
         padding: WidgetStateProperty.all(EdgeInsets.symmetric(vertical: 14.h)),
         minimumSize: WidgetStateProperty.all(
-          Size(double.maxFinite, AppSizes.buttonHeightMD.h),
+          Size(double.maxFinite.w, AppSizes.buttonHeightMD.h),
         ),
         textStyle: WidgetStateProperty.all(
           typography.displayLarge.copyWith(

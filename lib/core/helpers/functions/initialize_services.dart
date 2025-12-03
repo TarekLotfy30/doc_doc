@@ -4,7 +4,7 @@
 
 import 'package:easy_localization/easy_localization.dart';
 
-import '../../di/register_dependencies.dart';
+import '../../../config/di/register_dependencies.dart';
 import '../classes/app_logger.dart';
 
 /// Initializes all required application services and dependencies

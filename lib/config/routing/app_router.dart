@@ -8,7 +8,7 @@ import 'package:flutter/material.dart';
 
 import '../../features/auth/presentation/screens/login_screen.dart';
 import '../../features/onboarding/presentation/screen/onboarding_screen.dart';
-import '../helpers/classes/app_logger.dart';
+import '../../core/helpers/classes/app_logger.dart';
 import 'app_routes_name.dart';
 import 'route_transitions_strategy.dart';
 import 'transitions/cupertino_sheet.dart';

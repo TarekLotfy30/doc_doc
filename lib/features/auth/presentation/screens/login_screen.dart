@@ -8,8 +8,6 @@ import '../../../../core/constants/app_icons.dart';
 import '../../../../core/helpers/classes/app_input_validator.dart';
 import '../../../../core/helpers/classes/app_logger.dart';
 import '../../../../core/helpers/extensions/theme_extension.dart';
-import '../../../../core/theme/colors/light_colors.dart';
-import '../../../../core/theme/styles/app_font_family.dart';
 import '../../../../core/widgets/app_custom_text.dart';
 import '../../../../core/widgets/app_svg.dart';
 import '../../../../core/widgets/app_text_form_field.dart';
@@ -28,6 +26,9 @@ class _LoginViewState extends State<LoginView> {
   late final TextEditingController _passwordController;
   late final GlobalKey<FormState> _formKey;
 
+  bool _obscurePassword = true;
+  int rebuild = 0;
+
   @override
   void initState() {
     super.initState();
@@ -38,15 +39,17 @@ class _LoginViewState extends State<LoginView> {
 
   @override
   Widget build(BuildContext context) {
+    Logger.debug('Build LoginView $rebuild', 'LoginView');
+    rebuild++;
     return Scaffold(
       body: SafeArea(
         top: true,
         bottom: false,
-        child: Padding(
+        child: SingleChildScrollView(
           padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 24),
+          physics: const ClampingScrollPhysics(),
           child: Form(
             key: _formKey,
-            autovalidateMode: AutovalidateMode.onUserInteraction,
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
@@ -75,7 +78,6 @@ class _LoginViewState extends State<LoginView> {
                 ),
                 const SizedBox(height: 36),
                 AppTextFormField(
-                  valueKey: 'Email',
                   labelText: 'Email Address',
                   hint: 'Enter your email address',
                   autovalidateMode: AutovalidateMode.onUserInteraction,
@@ -89,13 +91,25 @@ class _LoginViewState extends State<LoginView> {
                 ),
                 const SizedBox(height: 16),
                 AppTextFormField(
-                  valueKey: 'password',
                   labelText: 'Password',
                   hint: 'Enter your password',
                   autovalidateMode: AutovalidateMode.onUserInteraction,
                   validator: InputValidator.validatePassword,
                   controller: _passwordController,
-                  obscureText: true,
+                  obscureText: _obscurePassword,
+                  suffixIcon: IconButton(
+                    icon: Icon(
+                      _obscurePassword
+                          ? AppIcons.visibility
+                          : AppIcons.visibilityOff,
+                    ),
+                    onPressed: () {
+                      setState(() {
+                        _obscurePassword = !_obscurePassword;
+                      });
+                    },
+                  ),
+                  keyboardType: TextInputType.visiblePassword,
                   textInputAction: TextInputAction.done,
                   inputFormatters: [
                     FilteringTextInputFormatter.allow(RegExp('[a-zA-Z0-9]')),

@@ -14,7 +14,6 @@ class AppTextFormField extends StatelessWidget {
     this.suffixIcon,
     this.keyboardType,
     this.textInputAction,
-    this.valueKey,
     this.validator,
     this.obscureText = false,
     this.readOnly = false,
@@ -31,13 +30,12 @@ class AppTextFormField extends StatelessWidget {
   final Widget? suffixIcon;
   final TextInputType? keyboardType;
   final TextInputAction? textInputAction;
-  final String? valueKey;
   final String? Function(String?)? validator;
   final bool obscureText;
   final bool readOnly;
   final List<TextInputFormatter>? inputFormatters;
   final ValueChanged<String?>? onFieldSubmitted;
-  final void Function()? onEditingComplete;
+  final VoidCallback? onEditingComplete;
   final ValueChanged<String?>? onChanged;
 
   @override
@@ -69,7 +67,6 @@ class AppTextFormField extends StatelessWidget {
         fontSize: 14,
         height: 1.5,
       ),
-      key: ValueKey(valueKey),
       onTapOutside: (event) => FocusScope.of(context).unfocus(),
       validator: validator,
       obscureText: obscureText,
