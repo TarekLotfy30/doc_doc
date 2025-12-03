@@ -2,10 +2,15 @@
 // SERVICE LOCATOR SETUP
 // ═══════════════════════════════════════════════════════════════
 
+import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:get_it/get_it.dart';
 
 import '../../core/helpers/classes/app_logger.dart';
+import '../connection/connectivity_interceptor.dart';
+import '../connection/connectivity_service.dart';
 import '../routing/app_router.dart';
+import '../services/network/dio_consumer.dart';
+import '../services/network/i_api_consumer.dart';
 
 /// This global instance of GetIt provides centralized dependency management
 /// following the Inversion of Control principle.
@@ -47,17 +52,22 @@ Future<void> registerDependencies() async {
 
 /// Registers connectivity-related services
 Future<void> _registerConnectivityService() async {
-  // const String loggerTag = 'DEPENDENCY_INJECTION';
+  const String loggerTag = 'DEPENDENCY_INJECTION';
 
-  // Logger.debug('Registering Connectivity...', loggerTag);
-  // getIt.registerLazySingleton<Connectivity>(Connectivity.new);
-  // Logger.success('Connectivity registered successfully.', loggerTag);
+  Logger.debug('Registering Connectivity...', loggerTag);
+  getIt.registerLazySingleton<Connectivity>(Connectivity.new);
+  Logger.success('Connectivity registered successfully.', loggerTag);
 
-  // Logger.debug('Registering ConnectivityService...', loggerTag);
-  // getIt.registerLazySingleton<ConnectivityService>(
-  //   () => ConnectivityService(getIt<Connectivity>()),
-  // );
-  // Logger.success('ConnectivityService registered successfully.', loggerTag);
+  Logger.debug('Registering ConnectivityService...', loggerTag);
+  getIt.registerLazySingleton<ConnectivityService>(
+    () => ConnectivityService(getIt<Connectivity>()),
+  );
+
+  Logger.debug('Registering ConnectivityInterceptor...', loggerTag);
+  getIt.registerLazySingleton<ConnectivityInterceptor>(
+    () => ConnectivityInterceptor(getIt<ConnectivityService>()),
+  );
+  Logger.success('ConnectivityService registered successfully.', loggerTag);
 }
 
 /// Registers navigation and routing services
@@ -83,11 +93,11 @@ Future<void> _registerLocalStorage() async {
 
 /// Registers API consumer and HTTP client services
 Future<void> _registerApiConsumer() async {
-  // const String loggerTag = 'DependencyInjection';
+  const String loggerTag = 'DependencyInjection';
 
-  // Logger.debug('Registering API Consumer...', loggerTag);
-  // getIt.registerSingleton<IApiConsumer>(DioConsumer());
-  // Logger.success('API Consumer registered successfully', loggerTag);
+  Logger.debug('Registering API Consumer...', loggerTag);
+  getIt.registerSingleton<IApiConsumer>(DioConsumer());
+  Logger.success('API Consumer registered successfully', loggerTag);
 }
 
 /// Registers repository layer services
@@ -121,13 +131,13 @@ Future<void> _registerStateManagement() async {
 
   // Logger.debug('Registering state management services...', loggerTag);
 
-  // // Register BLoC/Cubit instances
-  // // getIt.registerFactory<AuthCubit>(
-  // //   () => AuthCubit(getIt<IAuthRepo>()),
-  // // );
-  // // Logger.success('AuthCubit registered successfully', _loggerTag);
+  // Register BLoC/Cubit instances
+  // getIt.registerFactory<AuthCubit>(
+  //   () => AuthCubit(getIt<IAuthRepo>()),
+  // );
+  // Logger.success('AuthCubit registered successfully', _loggerTag);
 
-  // // Add other state management services as needed
+  // Add other state management services as needed
 
   // Logger.success(
   //   'State management services registered successfully',

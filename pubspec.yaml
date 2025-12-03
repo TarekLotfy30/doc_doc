@@ -19,8 +19,9 @@ dependencies:
   bloc: ^9.1.0
   # Service locator for dependency injection and clean architecture
   get_it: ^9.0.5 
-  # HTTP client for handling API calls
+  # HTTP client for handling API calls and retrying failed requests
   dio: ^5.9.0
+  dio_smart_retry: ^7.0.1
   # Logger that prints Dio request/response details for easier debugging
   pretty_dio_logger: ^1.4.0
   # Localization framework for easy multi-language support
@@ -34,6 +35,8 @@ dependencies:
   # UI library for responsive design
   flutter_screenutil: ^5.9.3
   device_preview: ^1.3.1
+  # Network connectivity status checker
+  connectivity_plus: ^7.0.0
 
 dev_dependencies:
   flutter_test:

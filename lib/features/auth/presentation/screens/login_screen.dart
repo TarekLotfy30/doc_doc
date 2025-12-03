@@ -1,9 +1,14 @@
 // ignore_for_file: lines_longer_than_80_chars
 
+import 'dart:convert';
+
+import 'package:dio/dio.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
+import '../../../../config/di/register_dependencies.dart';
+import '../../../../config/services/network/i_api_consumer.dart';
 import '../../../../core/constants/app_icons.dart';
 import '../../../../core/helpers/classes/app_input_validator.dart';
 import '../../../../core/helpers/classes/app_logger.dart';
@@ -117,7 +122,21 @@ class _LoginViewState extends State<LoginView> {
                 ),
                 const SizedBox(height: 32),
                 ElevatedButton(
-                  onPressed: () {},
+                  onPressed: () async {
+                    final dio = getIt<IApiConsumer>();
+                    final response = await dio.post(
+                      body: {
+                        'email': 'tarektest123@gmail.com',
+                        'password': 'Qweasd@12345',
+                      },
+                      endPoint: 'auth/login',
+                    );
+                    if (response.statusCode == 200) {
+                      print(json.encode(response.data));
+                    } else {
+                      print(response.statusMessage);
+                    }
+                  },
                   child: const CustomText(data: 'Login'),
                 ),
                 const SizedBox(height: 46),
