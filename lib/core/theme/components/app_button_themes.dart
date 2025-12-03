@@ -86,11 +86,11 @@ abstract final class AppButtonThemes {
             fontSize: 16.sp,
             fontWeight: AppFontWeight.semiBold,
             fontFamily: AppFontFamilyEnum.inter.name,
+            height: 1.5.h,
           ),
         ),
         animationDuration: AppDurations.fast,
         enableFeedback: true,
-        tapTargetSize: MaterialTapTargetSize.shrinkWrap,
       ),
     );
   }

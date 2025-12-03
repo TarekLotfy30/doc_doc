@@ -11,6 +11,8 @@ class Logger {
   static const String _green = '\x1B[32m';
   static const String _gray = '\x1B[90m';
   static const String _cyan = '\x1B[36m';
+  // static const String _magenta = '\x1B[35m'; // Alternative for names
+  // static const String _purple = '\x1B[95m'; // Another alternative
 
   static void _print(
     String level,

@@ -11,9 +11,9 @@ abstract final class AppDividerTheme {
     return DividerThemeData(
       color: color.divider,
       thickness: 1,
-      space: 1,
-      indent: 0,
-      endIndent: 0,
+      // space: 1,
+      indent: 5,
+      endIndent: 5,
     );
   }
 }

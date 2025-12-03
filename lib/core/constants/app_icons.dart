@@ -199,19 +199,13 @@ abstract final class AppIcons {
 
   // Social Media Icons
   /// Google logo for social login
-  static const String google = 'assets/svgs/icons/google.svg';
+  static const String google = 'assets/icons/google.svg';
 
   /// Apple logo for social login
-  static const String apple = 'assets/svgs/icons/apple.svg';
-
-  /// Apple logo (dark theme)
-  static const String appleDark = 'assets/svgs/icons/apple_dark.svg';
+  static const String apple = 'assets/icons/apple.svg';
 
   /// Facebook logo for social login
-  static const String facebook = 'assets/svgs/icons/facebook.svg';
-
-  /// Twitter/X logo for social login
-  static const String twitter = 'assets/svgs/icons/twitter.svg';
+  static const String facebook = 'assets/icons/facebook.svg';
 
   // Brand Icons
   /// App logo icon
