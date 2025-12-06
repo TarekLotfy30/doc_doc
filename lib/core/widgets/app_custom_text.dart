@@ -11,6 +11,7 @@ class CustomText extends StatelessWidget {
     this.color,
     this.height,
     this.letterSpacing,
+    this.fontWeight,
   });
 
   final String data;
@@ -20,6 +21,7 @@ class CustomText extends StatelessWidget {
   final Color? color;
   final double? height;
   final double? letterSpacing;
+  final FontWeight? fontWeight;
 
   @override
   Widget build(BuildContext context) {
@@ -29,6 +31,7 @@ class CustomText extends StatelessWidget {
       style: textTheme?.copyWith(
         color: color,
         fontSize: fontSize?.sp,
+        fontWeight: fontWeight,
         height: height?.h,
         letterSpacing: letterSpacing?.w,
       ),

@@ -6,6 +6,9 @@ import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:get_it/get_it.dart';
 
 import '../../core/helpers/classes/app_logger.dart';
+import '../../features/auth/controller/cubit/sign_in_cubit.dart';
+import '../../features/auth/data/repo/i_sign_in_repo.dart';
+import '../../features/auth/data/repo/sign_in_repo_impl.dart';
 import '../connection/connectivity_interceptor.dart';
 import '../connection/connectivity_service.dart';
 import '../routing/app_router.dart';
@@ -43,9 +46,9 @@ Future<void> registerDependencies() async {
     // ================ Register State Management ============================
     await _registerStateManagement();
 
-    Logger.success('✅ Dependency injection completed successfully', tag);
+    Logger.success('Dependency injection completed successfully', tag);
   } catch (error) {
-    Logger.error('❌ Dependency injection failed: $error', tag);
+    Logger.error('Dependency injection failed: $error', tag);
     rethrow;
   }
 }
@@ -101,19 +104,16 @@ Future<void> _registerApiConsumer() async {
 }
 
 /// Registers repository layer services
-///
-/// Time Complexity: O(1)
-/// Space Complexity: O(1)
 Future<void> _registerRepositories() async {
-  // const String loggerTag = 'DEPENDENCY_INJECTION';
+  const String loggerTag = 'DEPENDENCY_INJECTION';
 
-  // Logger.info('Setting up repositories...', loggerTag);
+  Logger.info('Setting up repositories...', loggerTag);
 
-  // Register authentication repository
-  // getIt.registerLazySingleton<IRegisterRepo>(
-  //   () => RegisterRepoImpl(getIt<IApiConsumer>()),
-  // );
-  // Logger.success('RegisterRepo registered successfully', _loggerTag);
+  // Register SignIn repository
+  getIt.registerLazySingleton<ISignInRepo>(
+    () => SignInRepoImpl(getIt<IApiConsumer>()),
+  );
+  Logger.success('SignInRepo registered successfully', loggerTag);
 
   // Register user repository
   // getIt.registerLazySingleton<IUserRepo>(
@@ -121,43 +121,21 @@ Future<void> _registerRepositories() async {
   // );
   // Logger.success('UserRepo registered successfully', _loggerTag);
 
-  // Register other repositories as needed
-  //Logger.success('Repositories setup completed', loggerTag);
+  Logger.success('Repositories setup completed', loggerTag);
 }
 
 /// Registers state management services
 Future<void> _registerStateManagement() async {
-  // const String loggerTag = 'DEPENDENCY_INJECTION';
+  const String loggerTag = 'DEPENDENCY_INJECTION';
 
-  // Logger.debug('Registering state management services...', loggerTag);
+  Logger.debug('Registering state management services...', loggerTag);
 
   // Register BLoC/Cubit instances
-  // getIt.registerFactory<AuthCubit>(
-  //   () => AuthCubit(getIt<IAuthRepo>()),
-  // );
-  // Logger.success('AuthCubit registered successfully', _loggerTag);
+  getIt.registerFactory<SignInCubit>(() => SignInCubit(getIt<ISignInRepo>()));
+  Logger.success('SignInCubit registered successfully', loggerTag);
 
-  // Add other state management services as needed
-
-  // Logger.success(
-  //   'State management services registered successfully',
-  //   loggerTag,
-  // );
+  Logger.success(
+    'State management services registered successfully',
+    loggerTag,
+  );
 }
-
-// Get instances of DioHelper and LocalHelper
-//   final dioHelper1 = getIt<DioHelper>();
-//   final dioHelper2 = getIt<DioHelper>();
-
-//   final localHelper1 = getIt<LocalHelper>();
-//   final localHelper2 = getIt<LocalHelper>();
-
-// Print the hash codes of the instances
-//   print('DioHelper Instance 1: ${dioHelper1.hashCode}');
-//   print('DioHelper Instance 2: ${dioHelper2.hashCode}');
-//print('Are DioHelper the same? ${identical(dioHelper1, dioHelper2)}');
-
-//   print('LocalHelper Instance 1: ${localHelper1.hashCode}');
-//   print('LocalHelper Instance 2: ${localHelper2.hashCode}');
-//rint('Are LocalHelper  the same? ${identical(localHelper1, localHelper2)}');
-// }

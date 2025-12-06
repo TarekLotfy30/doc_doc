@@ -16,7 +16,7 @@ abstract final class ApiConfig {
   // ========================== Auth Endpoints =======================
   static const String auth = 'auth';
   static const String register = '$auth/register';
-  static const String login = '$auth/login';
+  static const String signIn = '$auth/login';
   static const String logout = '$auth/logout';
 
   // ========================== User Endpoints =======================

@@ -8,4 +8,7 @@ abstract final class AppRoutesName {
 
   // ======================== auth route ================================
   static const String loginView = '/login';
+
+  // ======================== home route ================================
+  static const String homeView = '/home';
 }

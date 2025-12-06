@@ -6,7 +6,6 @@
 
 import 'package:dio/dio.dart';
 import 'package:dio_smart_retry/dio_smart_retry.dart';
-import 'package:flutter/foundation.dart';
 
 import '../../../core/constants/app_duration.dart';
 import '../../../core/helpers/classes/app_logger.dart';
@@ -87,33 +86,8 @@ class DioConsumer implements IApiConsumer {
     // 3. Authentication (Add auth token)
     //_dioClient.interceptors.add(getIt<AuthInterceptor>());
 
-    // 4. Logging (Log after all headers are set, only in debug mode)
-    if (kDebugMode) {
-      _dioClient.interceptors.add(
-        LoggingInterceptor(
-          logRequestBody: true,
-          logResponseBody: true,
-          logHeaders: true,
-          maxLogLength: 2000,
-        ),
-      );
-    }
-    //OR
-    /*    
-    if (kDebugMode) {
-      _dioClient.interceptors.add(
-        PrettyDioLogger(
-          requestHeader: true,
-          requestBody: true,
-          responseBody: true,
-          responseHeader: false,
-          error: true,
-          compact: true,
-          maxWidth: 90,
-        ),
-      );
-    } 
-    */
+    // 4. Logging (Log after all headers are set)
+    _dioClient.interceptors.add(LoggingInterceptor(logHeaders: false));
 
     // 5. Retry Logic (Retry failed requests)
     _dioClient.interceptors.add(
@@ -172,7 +146,6 @@ class DioConsumer implements IApiConsumer {
       );
       return response;
     } catch (e) {
-
       rethrow;
     }
   }

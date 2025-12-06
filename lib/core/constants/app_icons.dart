@@ -14,6 +14,8 @@ abstract final class AppIcons {
   /// Password icon for secure input fields
   static const IconData password = Icons.lock_outline;
 
+  static const IconData checkIcon = Icons.check_circle;
+
   /// Show password icon
   static const IconData visibility = Icons.visibility_outlined;
 

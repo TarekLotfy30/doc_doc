@@ -2,10 +2,12 @@
 // INITIALIZE ALL REQUIRED SERVICES
 // ═══════════════════════════════════════════════════════════════
 
+import 'package:bloc/bloc.dart';
 import 'package:easy_localization/easy_localization.dart';
 
 import '../../../config/di/register_dependencies.dart';
 import '../classes/app_logger.dart';
+import '../classes/observer.dart';
 
 /// Initializes all required application services and dependencies
 ///
@@ -48,15 +50,15 @@ Future<void> _initializeCoreServices() async {
   Logger.debug('Initializing core services...', tag);
 
   // Initialize BLoC observer for state management debugging
-  //Bloc.observer = MyBlocObserver();
+  Bloc.observer = MyBlocObserver();
   Logger.success('BLoC observer initialized', tag);
 }
 
 /// Initializes third-party services (Firebase, Messaging, etc.)
 Future<void> _initializeThirdPartyServices() async {
-  const String tag = 'ServiceInitialization';
+  // const String tag = 'ServiceInitialization';
 
-  Logger.debug('Initializing third-party services...', tag);
+  // Logger.debug('Initializing third-party services...', tag);
 
   // Initialize Firebase services (currently commented out)
   // await _initializeFirebase();
@@ -70,7 +72,7 @@ Future<void> _initializeThirdPartyServices() async {
   // await _initializeLocationServices();
   // Logger.info('Location services initialized', _loggerTag);
 
-  Logger.debug('Third-party services initialization completed', tag);
+  // Logger.debug('Third-party services initialization completed', tag);
 }
 
 /// Initializes localization services using EasyLocalization

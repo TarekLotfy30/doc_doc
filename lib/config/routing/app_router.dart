@@ -5,10 +5,14 @@
 import 'dart:io';
 
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
-import '../../features/auth/presentation/screens/login_screen.dart';
-import '../../features/onboarding/presentation/screen/onboarding_screen.dart';
 import '../../core/helpers/classes/app_logger.dart';
+import '../../features/auth/controller/cubit/sign_in_cubit.dart';
+import '../../features/auth/presentation/screens/login_screen.dart';
+import '../../features/home/presentation/screens/home_view.dart';
+import '../../features/onboarding/presentation/screen/onboarding_screen.dart';
+import '../di/register_dependencies.dart';
 import 'app_routes_name.dart';
 import 'route_transitions_strategy.dart';
 import 'transitions/cupertino_sheet.dart';
@@ -29,7 +33,14 @@ class AppRouter {
         return _build(child: const OnboardingView());
 
       case AppRoutesName.loginView:
-        return _build(child: const LoginView());
+        return _build(
+          child: BlocProvider(
+            create: (_) => getIt<SignInCubit>(),
+            child: const LoginView(),
+          ),
+        );
+      case AppRoutesName.homeView:
+        return _build(child: const HomeView());
 
       // case AppRoutesName.signInScreen:
       //  return _build(child: const SignInView(), forcedType: RouteType.slide);
