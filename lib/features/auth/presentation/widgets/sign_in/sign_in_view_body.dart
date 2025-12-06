@@ -10,9 +10,9 @@ import '../../../../../core/widgets/app_dialog.dart';
 import '../../../../../core/widgets/app_loading_indicator.dart';
 import '../../../../../core/widgets/app_snack_bar.dart';
 import '../../../controller/sign_in_cubit/sign_in_cubit.dart';
-import '../../../data/models/sign_in_request_model.dart';
-import 'login_footer.dart';
-import 'login_form_section.dart';
+import '../../../data/models/sign_up/sign_in_request_model.dart';
+import 'sign_in_footer.dart';
+import 'sign_in_form_section.dart';
 import 'or_sign_in_divider.dart';
 import 'social_sign_in_buttons.dart';
 import 'welcome_header.dart';
@@ -25,19 +25,14 @@ class SignInViewBody extends StatefulWidget {
 }
 
 class _SignInViewBodyState extends State<SignInViewBody> {
-  late final TextEditingController _emailController;
-  late final TextEditingController _passwordController;
-  late final GlobalKey<FormState> _formKey;
-  late final ValueNotifier<bool> _obscurePasswordNotifier;
-
-  @override
-  void initState() {
-    super.initState();
-    _emailController = TextEditingController(text: 'tarektest123@gmail.com');
-    _passwordController = TextEditingController(text: 'Qweasd@123456');
-    _formKey = GlobalKey<FormState>();
-    _obscurePasswordNotifier = ValueNotifier<bool>(true);
-  }
+  final TextEditingController emailController = TextEditingController(
+    text: 'tarektest123@gmail.com',
+  );
+  final TextEditingController passwordController = TextEditingController(
+    text: 'Qweasd@123456',
+  );
+  final GlobalKey<FormState> formKey = GlobalKey<FormState>();
+  final ValueNotifier<bool> obscurePasswordNotifier = ValueNotifier<bool>(true);
 
   Future<void> _blocListener(BuildContext context, SignInState state) async {
     if (state is SignInError) {
@@ -63,19 +58,13 @@ class _SignInViewBodyState extends State<SignInViewBody> {
     Logger.debug('Login button pressed', 'LoginViewBody');
     final signInCubit = BlocProvider.of<SignInCubit>(context);
 
-    if (_formKey.currentState?.validate() ?? false) {
+    if (formKey.currentState?.validate() ?? false) {
       await signInCubit.signIn(
         SignInRequestModel(
-          email: _emailController.text,
-          password: _passwordController.text,
+          email: emailController.text,
+          password: passwordController.text,
         ),
       );
-    } else {
-      // Optional: Add a subtle shake animation or focus to the first
-      // invalid field.
-      FocusManager.instance.primaryFocus?.unfocus();
-      await Future.delayed(AppDurations.medium);
-      FocusManager.instance.primaryFocus?.requestFocus();
     }
   }
 
@@ -86,7 +75,7 @@ class _SignInViewBodyState extends State<SignInViewBody> {
           current is SignInError || current is SignInSuccess,
       listener: _blocListener,
       child: Form(
-        key: _formKey,
+        key: formKey,
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
@@ -96,9 +85,9 @@ class _SignInViewBodyState extends State<SignInViewBody> {
 
             // 2. Form Section (Email, Password)
             LoginFormSection(
-              emailController: _emailController,
-              passwordController: _passwordController,
-              obscurePasswordNotifier: _obscurePasswordNotifier,
+              emailController: emailController,
+              passwordController: passwordController,
+              obscurePasswordNotifier: obscurePasswordNotifier,
             ),
             const SizedBox(height: 32),
 
@@ -141,7 +130,7 @@ class _SignInViewBodyState extends State<SignInViewBody> {
             const SizedBox(height: 32),
 
             // 6. Terms and Sign Up Links
-            const LoginFooter(),
+            const SignInFooter(),
           ],
         ),
       ),
@@ -150,9 +139,9 @@ class _SignInViewBodyState extends State<SignInViewBody> {
 
   @override
   void dispose() {
-    _emailController.dispose();
-    _passwordController.dispose();
-    _obscurePasswordNotifier.dispose();
+    obscurePasswordNotifier.dispose();
+    passwordController.dispose();
+    emailController.dispose();
     super.dispose();
   }
 }

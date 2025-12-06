@@ -43,7 +43,7 @@ class LoginFormSection extends StatelessWidget {
               labelText: 'Password',
               hint: 'Enter your password',
               autovalidateMode: AutovalidateMode.onUserInteraction,
-              validator: InputValidator.validatePassword,
+              validator: InputValidator.validatePasswordSignIn,
               controller: passwordController,
               obscureText: isObscure,
               suffixIcon: IconButton(

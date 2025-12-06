@@ -1,6 +1,6 @@
 // ignore_for_file: must_be_immutable
 
-import '../../../../core/models/base_model.dart';
+import '../../../../../core/models/base_model.dart';
 
 class SignInResponseModel extends BaseModel<SignInResponseModel> {
   SignInResponseModel({this.message, this.data, this.status, this.code});

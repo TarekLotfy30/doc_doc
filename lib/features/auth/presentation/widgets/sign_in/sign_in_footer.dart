@@ -4,9 +4,10 @@ import 'package:flutter/material.dart';
 import '../../../../../config/routing/app_routes_name.dart';
 import '../../../../../core/helpers/classes/app_navigation.dart';
 import '../../../../../core/helpers/extensions/theme_extension.dart';
+import '../../../../../core/widgets/app_custom_text.dart';
 
-class LoginFooter extends StatelessWidget {
-  const LoginFooter({super.key});
+class SignInFooter extends StatelessWidget {
+  const SignInFooter({super.key});
 
   /// Handles the tap action for terms/privacy links.
   Future<void> _handleTap(BuildContext context, String linkName) async {
@@ -78,31 +79,27 @@ class LoginFooter extends StatelessWidget {
           ),
         ),
         // Sign Up Link
-        Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 64),
-          child: Align(
-            alignment: Alignment.center,
-            child: RichText(
-              textAlign: TextAlign.center,
-              text: TextSpan(
-                children: [
-                  TextSpan(
-                    text: "Don't have an account? ",
-                    style: context.textTheme.bodyLarge?.copyWith(
-                      fontSize: 13,
-                      height: 1.5,
-                      color: context.colorScheme.onSurface,
-                    ),
-                  ),
-                  _linkTextSpan(
-                    context: context,
-                    text: 'Sign Up',
-                    linkName: AppRoutesName.signUpView,
-                  ),
-                ],
-              ),
+        Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            CustomText(
+              data: "Don't have an account? ",
+              textTheme: context.textTheme.bodyLarge,
+              fontSize: 13,
+              color: context.colorScheme.onSurface,
+              height: 1.5,
             ),
-          ),
+            TextButton(
+              onPressed: () async {
+                await AppNavigation.navigateTo(
+                  context,
+                  AppRoutesName.signUpView,
+                );
+                await Future.delayed(const Duration(milliseconds: 200));
+              },
+              child: const CustomText(data: 'Sign Up'),
+            ),
+          ],
         ),
       ],
     );

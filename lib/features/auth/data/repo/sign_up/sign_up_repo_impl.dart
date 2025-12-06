@@ -5,30 +5,30 @@ import '../../../../../config/errors/failures/failure.dart';
 import '../../../../../config/errors/failures/server_failure.dart';
 import '../../../../../config/services/network/api_config.dart';
 import '../../../../../config/services/network/i_api_consumer.dart';
-import '../../models/sign_up/sign_in_request_model.dart';
-import '../../models/sign_up/sign_in_response_model.dart';
-import 'i_sign_in_repo.dart';
+import '../../models/sign_in/sign_up_request_model.dart';
+import '../../models/sign_in/sign_up_response_model.dart';
+import 'i_sign_up_repo.dart';
 
-class SignInRepoImpl implements ISignInRepo {
-  const SignInRepoImpl(this._client);
+class SignUpRepoImpl implements ISignUpRepo {
+  SignUpRepoImpl(this._client);
 
   final IApiConsumer _client;
 
   @override
-  Future<Either<Failure, SignInResponseModel>> signIn(
-    SignInRequestModel model,
+  Future<Either<Failure, SignUpResponseModel>> signUp(
+    SignUpRequestModel model,
   ) async {
     try {
       final response = await _client.post(
-        endPoint: ApiConfig.signIn,
+        endPoint: ApiConfig.signUp,
         body: model.toJson(),
       );
 
-      final SignInResponseModel responseModel = SignInResponseModel().fromJson(
+      final SignUpResponseModel responseModel = SignUpResponseModel().fromJson(
         response.data as Map<String, dynamic>,
       );
 
-      if (responseModel.code != 200 && responseModel.data == null) {
+      if (responseModel.code != 200 || responseModel.data == null) {
         return Left(ServerFailure(responseModel.message!, responseModel.code!));
       }
 

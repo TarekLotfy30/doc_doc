@@ -1,7 +1,7 @@
 import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
 
-import '../../data/models/sign_in_request_model.dart';
+import '../../data/models/sign_up/sign_in_request_model.dart';
 import '../../data/repo/sign_in/i_sign_in_repo.dart';
 
 part 'sign_in_state.dart';

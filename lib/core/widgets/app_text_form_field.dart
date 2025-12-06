@@ -14,6 +14,7 @@ class AppTextFormField extends StatelessWidget {
     this.suffixIcon,
     this.keyboardType,
     this.textInputAction,
+    this.textCapitalization = TextCapitalization.none,
     this.validator,
     this.obscureText = false,
     this.readOnly = false,
@@ -30,6 +31,7 @@ class AppTextFormField extends StatelessWidget {
   final Widget? suffixIcon;
   final TextInputType? keyboardType;
   final TextInputAction? textInputAction;
+  final TextCapitalization textCapitalization;
   final String? Function(String?)? validator;
   final bool obscureText;
   final bool readOnly;
@@ -53,6 +55,7 @@ class AppTextFormField extends StatelessWidget {
       ),
       keyboardType: keyboardType,
       textInputAction: textInputAction,
+      textCapitalization: textCapitalization,
       enableSuggestions: true,
       errorBuilder: (context, errorText) => CustomText(
         data: errorText,

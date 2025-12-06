@@ -7,8 +7,11 @@ import 'package:get_it/get_it.dart';
 
 import '../../core/helpers/classes/app_logger.dart';
 import '../../features/auth/controller/sign_in_cubit/sign_in_cubit.dart';
+import '../../features/auth/controller/sign_up_cubit/sign_up_cubit.dart';
 import '../../features/auth/data/repo/sign_in/i_sign_in_repo.dart';
 import '../../features/auth/data/repo/sign_in/sign_in_repo_impl.dart';
+import '../../features/auth/data/repo/sign_up/i_sign_up_repo.dart';
+import '../../features/auth/data/repo/sign_up/sign_up_repo_impl.dart';
 import '../connection/connectivity_interceptor.dart';
 import '../connection/connectivity_service.dart';
 import '../routing/app_router.dart';
@@ -57,16 +60,12 @@ Future<void> registerDependencies() async {
 Future<void> _registerConnectivityService() async {
   const String loggerTag = 'DEPENDENCY_INJECTION';
 
-  Logger.debug('Registering Connectivity...', loggerTag);
   getIt.registerLazySingleton<Connectivity>(Connectivity.new);
-  Logger.success('Connectivity registered successfully.', loggerTag);
 
-  Logger.debug('Registering ConnectivityService...', loggerTag);
   getIt.registerLazySingleton<ConnectivityService>(
     () => ConnectivityService(getIt<Connectivity>()),
   );
 
-  Logger.debug('Registering ConnectivityInterceptor...', loggerTag);
   getIt.registerLazySingleton<ConnectivityInterceptor>(
     () => ConnectivityInterceptor(getIt<ConnectivityService>()),
   );
@@ -77,7 +76,6 @@ Future<void> _registerConnectivityService() async {
 Future<void> _registerNavigationRouter() async {
   const String loggerTag = 'DEPENDENCY_INJECTION';
 
-  Logger.debug('Registering AppRouter...', loggerTag);
   getIt.registerSingleton<AppRouter>(AppRouter());
   Logger.success('AppRouter registered successfully.', loggerTag);
 }
@@ -98,7 +96,6 @@ Future<void> _registerLocalStorage() async {
 Future<void> _registerApiConsumer() async {
   const String loggerTag = 'DependencyInjection';
 
-  Logger.debug('Registering API Consumer...', loggerTag);
   getIt.registerSingleton<IApiConsumer>(DioConsumer());
   Logger.success('API Consumer registered successfully', loggerTag);
 }
@@ -107,19 +104,15 @@ Future<void> _registerApiConsumer() async {
 Future<void> _registerRepositories() async {
   const String loggerTag = 'DEPENDENCY_INJECTION';
 
-  Logger.info('Setting up repositories...', loggerTag);
-
   // Register SignIn repository
   getIt.registerLazySingleton<ISignInRepo>(
     () => SignInRepoImpl(getIt<IApiConsumer>()),
   );
-  Logger.success('SignInRepo registered successfully', loggerTag);
 
-  // Register user repository
-  // getIt.registerLazySingleton<IUserRepo>(
-  //   () => UserRepoImpl(getIt<IApiConsumer>(), getIt<LocalHelper>()),
-  // );
-  // Logger.success('UserRepo registered successfully', _loggerTag);
+  // Register SignUp repository
+  getIt.registerLazySingleton<ISignUpRepo>(
+    () => SignUpRepoImpl(getIt<IApiConsumer>()),
+  );
 
   Logger.success('Repositories setup completed', loggerTag);
 }
@@ -128,11 +121,11 @@ Future<void> _registerRepositories() async {
 Future<void> _registerStateManagement() async {
   const String loggerTag = 'DEPENDENCY_INJECTION';
 
-  Logger.debug('Registering state management services...', loggerTag);
-
-  // Register BLoC/Cubit instances
+  // Register SignInCubit
   getIt.registerFactory<SignInCubit>(() => SignInCubit(getIt<ISignInRepo>()));
-  Logger.success('SignInCubit registered successfully', loggerTag);
+
+  // Register SignUpCubit
+  getIt.registerFactory<SignUpCubit>(() => SignUpCubit(getIt<ISignUpRepo>()));
 
   Logger.success(
     'State management services registered successfully',

@@ -1,4 +1,4 @@
-import '../../../../core/models/base_model.dart';
+import '../../../../../core/models/base_model.dart';
 
 class SignInRequestModel extends BaseModel<SignInRequestModel> {
   SignInRequestModel({required this.email, required this.password});

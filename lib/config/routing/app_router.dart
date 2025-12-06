@@ -9,6 +9,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../core/helpers/classes/app_logger.dart';
 import '../../features/auth/controller/sign_in_cubit/sign_in_cubit.dart';
+import '../../features/auth/controller/sign_up_cubit/sign_up_cubit.dart';
 import '../../features/auth/presentation/screens/sign_in_view.dart';
 import '../../features/auth/presentation/screens/sign_up_view.dart';
 import '../../features/home/presentation/screens/home_view.dart';
@@ -39,10 +40,17 @@ class AppRouter {
             create: (_) => getIt<SignInCubit>(),
             child: const SignInView(),
           ),
+          forcedType: RouteType.fade,
         );
 
       case AppRoutesName.signUpView:
-        return _build(child: const SignUpView(), forcedType: RouteType.scale);
+        return _build(
+          child: BlocProvider(
+            create: (context) => getIt<SignUpCubit>(),
+            child: const SignUpView(),
+          ),
+          forcedType: RouteType.fade,
+        );
 
       case AppRoutesName.homeView:
         return _build(child: const HomeView());

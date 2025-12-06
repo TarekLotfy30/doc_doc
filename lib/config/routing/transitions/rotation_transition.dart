@@ -12,14 +12,11 @@ class RotationTransitionStrategy implements RouteTransitionStrategy {
 
     return PageRouteBuilder<T>(
       settings: settings,
-      transitionDuration: AppDurations.medium,
-      reverseTransitionDuration: const Duration(milliseconds: 350),
+      transitionDuration: const Duration(seconds: 3),
+      reverseTransitionDuration: const Duration(seconds: 3),
       pageBuilder: (_, animation, _) => child,
       transitionsBuilder: (_, animation, _, child) {
-        final rotate = Tween(
-          begin: 0.1,
-          end: 0.0.toInt().toDouble(),
-        ).animate(animation);
+        final rotate = Tween(begin: 0.1, end: 0.0).animate(animation);
         return Transform.rotate(
           angle: rotate.value,
           child: FadeTransition(opacity: animation, child: child),
