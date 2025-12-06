@@ -20,75 +20,82 @@ abstract final class AppInputTheme {
     return InputDecorationTheme(
       isDense: true,
       filled: true,
-      fillColor: color.surfaceContainerHighest,
+      fillColor: color.surfaceContainer,
 
       // Default border (unfocused, enabled)
       border: OutlineInputBorder(
         borderRadius: BorderRadius.circular(AppCorners.input),
         borderSide: BorderSide(
-          color: color.outline,
-          width: AppBorderWidth.defaultWidth,
+          color: color.surfaceDim,
+          width: AppBorderWidth.defaultWidth.w,
         ),
       ),
 
       enabledBorder: OutlineInputBorder(
         borderRadius: BorderRadius.circular(AppCorners.input),
         borderSide: BorderSide(
-          color: color.outline,
-          width: AppBorderWidth.defaultWidth,
+          color: color.surfaceDim,
+          width: AppBorderWidth.defaultWidth.w,
         ),
       ),
       focusedBorder: OutlineInputBorder(
         borderRadius: BorderRadius.circular(AppCorners.input),
         borderSide: BorderSide(
           color: color.primary,
-          width: AppBorderWidth.focused,
+          width: AppBorderWidth.defaultWidth.w,
         ),
       ),
       errorBorder: OutlineInputBorder(
         borderRadius: BorderRadius.circular(AppCorners.input),
-        borderSide: BorderSide(color: color.error, width: AppBorderWidth.error),
+        borderSide: BorderSide(
+          color: color.error,
+          width: AppBorderWidth.defaultWidth.w,
+        ),
       ),
       focusedErrorBorder: OutlineInputBorder(
         borderRadius: BorderRadius.circular(AppCorners.input),
         borderSide: BorderSide(
           color: color.error,
-          width: AppBorderWidth.focused,
+          width: AppBorderWidth.defaultWidth.w,
         ),
       ),
       disabledBorder: OutlineInputBorder(
         borderRadius: BorderRadius.circular(AppCorners.input),
         borderSide: BorderSide(
           color: color.onSurface.withValues(alpha: 0.12),
-          width: AppBorderWidth.disabled,
+          width: AppBorderWidth.defaultWidth.w,
         ),
       ),
 
-      hintStyle: typography.bodyLarge.copyWith(color: color.onSurfaceVariant),
+      labelStyle: typography.titleLarge.copyWith(
+        color: color.outlineVariant,
+        fontSize: 14.sp,
+        height: 1.5.h,
+      ),
+      hintStyle: typography.titleLarge.copyWith(
+        color: color.outlineVariant,
+        fontSize: 14.sp,
+        height: 1.8.h,
+      ),
       helperStyle: typography.bodyLarge.copyWith(color: color.onSurfaceVariant),
-      errorStyle: typography.bodyLarge.copyWith(color: color.error),
+      errorStyle: typography.bodyLarge.copyWith(
+        color: color.error,
+        height: 1.5.h,
+        letterSpacing: -0.2.w,
+      ),
       counterStyle: typography.bodyLarge.copyWith(
         color: color.onSurfaceVariant,
       ),
-      labelStyle: typography.bodyLarge.copyWith(color: color.onSurfaceVariant),
-      contentPadding: const EdgeInsets.symmetric(vertical: 16, horizontal: 16),
+      contentPadding: const EdgeInsets.symmetric(vertical: 17, horizontal: 20),
       prefixIconColor: color.onSurfaceVariant,
       suffixIconColor: color.onSurfaceVariant,
       iconColor: color.onSurfaceVariant,
-      floatingLabelStyle: typography.bodyLarge.copyWith(color: color.primary),
-      floatingLabelBehavior: FloatingLabelBehavior.auto,
-      suffixStyle: typography.bodyLarge.copyWith(
-        color: color.onSurfaceVariant,
-      ),
-      prefixStyle: typography.bodyLarge.copyWith(
-        color: color.onSurfaceVariant,
-      ),
+      //floatingLabelStyle: typography.bodyLarge.copyWith(color: color.primary),
+      //floatingLabelBehavior: FloatingLabelBehavior.auto,
+      //suffixStyle: typography.bodyLarge.copyWith(color: color.onSurfaceVariant),
+      //prefixStyle: typography.bodyLarge.copyWith(color: color.onSurfaceVariant),
       prefixIconConstraints: BoxConstraints(minWidth: 48.w, minHeight: 48.h),
       suffixIconConstraints: BoxConstraints(minWidth: 48.w, minHeight: 48.h),
-      activeIndicatorBorder: BorderSide(
-        color: color.primary,
-        width: AppBorderWidth.focused,
-      ),
       errorMaxLines: 2,
       isCollapsed: false,
       hintFadeDuration: AppDurations.fast,
@@ -96,10 +103,6 @@ abstract final class AppInputTheme {
       hoverColor: color.onSurface.withValues(alpha: 0.08),
       floatingLabelAlignment: FloatingLabelAlignment.start,
       visualDensity: VisualDensity.standard,
-      outlineBorder: BorderSide(
-        color: color.outline,
-        width: AppBorderWidth.defaultWidth,
-      ),
       hintMaxLines: 1,
     );
   }

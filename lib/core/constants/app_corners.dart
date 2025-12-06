@@ -38,7 +38,7 @@ abstract final class AppCorners {
   static const double chip = _xs;
 
   /// Text fields, search bars, dropdowns
-  static const double input = _sm;
+  static const double input = _lg;
 
   /// Standard cards and containers
   static const double card = _md;

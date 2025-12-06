@@ -1,7 +1,7 @@
 // ═══════════════════════════════════════════════════════════════
 //  APPLICATION ENTRY POINT
 // ═══════════════════════════════════════════════════════════════
-
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_native_splash/flutter_native_splash.dart';
 
@@ -29,6 +29,13 @@ Future<void> main() async {
   await initializeServices();
 
   // Run the application
-  runApp(const DocDocApp());
+  runApp(
+    EasyLocalization(
+      supportedLocales: const [Locale('en', 'US')],
+      path: 'assets/translations',
+      fallbackLocale: const Locale('en', 'US'),
+      child: const DocDocApp(),
+    ),
+  );
   Logger.info('Application started successfully', 'main');
 }

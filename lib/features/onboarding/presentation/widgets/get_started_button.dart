@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 import '../../../../core/helpers/classes/app_navigation.dart';
-import '../../../../core/routing/app_routes_name.dart';
+import '../../../../config/routing/app_routes_name.dart';
 import '../../../../core/widgets/app_custom_text.dart';
 
 class GetStartedButton extends StatelessWidget {
@@ -11,10 +11,7 @@ class GetStartedButton extends StatelessWidget {
   Widget build(BuildContext context) {
     return ElevatedButton(
       onPressed: () async {
-        await AppNavigation.navigateTo(
-          context,
-          AppRoutesName.loginView,
-        );
+        await AppNavigation.navigateTo(context, AppRoutesName.signInView);
       },
       child: const CustomText(data: 'Get Started'),
     );
