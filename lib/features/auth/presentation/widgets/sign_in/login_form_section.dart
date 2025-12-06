@@ -1,14 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
-import '../../../../core/constants/app_icons.dart';
-import '../../../../core/helpers/classes/app_input_validator.dart';
-import '../../../../core/helpers/classes/app_logger.dart';
-import '../../../../core/helpers/extensions/theme_extension.dart';
-import '../../../../core/widgets/app_text_form_field.dart';
+import '../../../../../core/constants/app_icons.dart';
+import '../../../../../core/helpers/classes/app_input_validator.dart';
+import '../../../../../core/helpers/extensions/theme_extension.dart';
+import '../../../../../core/widgets/app_text_form_field.dart';
 
 class LoginFormSection extends StatelessWidget {
-  
   const LoginFormSection({
     super.key,
     required this.emailController,
@@ -41,7 +39,6 @@ class LoginFormSection extends StatelessWidget {
         ValueListenableBuilder<bool>(
           valueListenable: obscurePasswordNotifier,
           builder: (context, isObscure, child) {
-            Logger.debug('isObscure: $isObscure', 'LoginFormSection');
             return AppTextFormField(
               labelText: 'Password',
               hint: 'Enter your password',

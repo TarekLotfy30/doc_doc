@@ -2,8 +2,8 @@
 
 import '../../../../core/models/base_model.dart';
 
-class LoginResponseModel extends BaseModel<LoginResponseModel> {
-  LoginResponseModel({this.message, this.data, this.status, this.code});
+class SignInResponseModel extends BaseModel<SignInResponseModel> {
+  SignInResponseModel({this.message, this.data, this.status, this.code});
 
   String? message;
   Data? data;
@@ -11,8 +11,8 @@ class LoginResponseModel extends BaseModel<LoginResponseModel> {
   int? code;
 
   @override
-  LoginResponseModel fromJson(Map<String, dynamic> json) {
-    return LoginResponseModel(
+  SignInResponseModel fromJson(Map<String, dynamic> json) {
+    return SignInResponseModel(
       message: json['message'],
       data: json['data'] is Map<String, dynamic>
           ? Data().fromJson(json['data'])

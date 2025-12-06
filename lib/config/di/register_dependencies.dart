@@ -6,9 +6,9 @@ import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:get_it/get_it.dart';
 
 import '../../core/helpers/classes/app_logger.dart';
-import '../../features/auth/controller/cubit/sign_in_cubit.dart';
-import '../../features/auth/data/repo/i_sign_in_repo.dart';
-import '../../features/auth/data/repo/sign_in_repo_impl.dart';
+import '../../features/auth/controller/sign_in_cubit/sign_in_cubit.dart';
+import '../../features/auth/data/repo/sign_in/i_sign_in_repo.dart';
+import '../../features/auth/data/repo/sign_in/sign_in_repo_impl.dart';
 import '../connection/connectivity_interceptor.dart';
 import '../connection/connectivity_service.dart';
 import '../routing/app_router.dart';

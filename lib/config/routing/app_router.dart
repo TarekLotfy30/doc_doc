@@ -8,8 +8,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../core/helpers/classes/app_logger.dart';
-import '../../features/auth/controller/cubit/sign_in_cubit.dart';
-import '../../features/auth/presentation/screens/login_screen.dart';
+import '../../features/auth/controller/sign_in_cubit/sign_in_cubit.dart';
+import '../../features/auth/presentation/screens/sign_in_view.dart';
+import '../../features/auth/presentation/screens/sign_up_view.dart';
 import '../../features/home/presentation/screens/home_view.dart';
 import '../../features/onboarding/presentation/screen/onboarding_screen.dart';
 import '../di/register_dependencies.dart';
@@ -32,33 +33,19 @@ class AppRouter {
       case AppRoutesName.onboardingView:
         return _build(child: const OnboardingView());
 
-      case AppRoutesName.loginView:
+      case AppRoutesName.signInView:
         return _build(
           child: BlocProvider(
             create: (_) => getIt<SignInCubit>(),
-            child: const LoginView(),
+            child: const SignInView(),
           ),
         );
+
+      case AppRoutesName.signUpView:
+        return _build(child: const SignUpView(), forcedType: RouteType.scale);
+
       case AppRoutesName.homeView:
         return _build(child: const HomeView());
-
-      // case AppRoutesName.signInScreen:
-      //  return _build(child: const SignInView(), forcedType: RouteType.slide);
-
-      // case AppRoutesName.signUpScreen:
-      //   return _build(
-      //     child: const SignUpView(),
-      //     forcedType: RouteType.cupertinoSheet,
-      //   );
-
-      // case AppRoutesName.forgetPasswordScreen:
-      //   return _build(
-      //     child: const ForgetPasswordView(),
-      //     forcedType: RouteType.fade,
-      //   );
-
-      // case AppRoutesName.homeScreen:
-      //   return _build(child: const HomeView());
 
       default:
         return null;

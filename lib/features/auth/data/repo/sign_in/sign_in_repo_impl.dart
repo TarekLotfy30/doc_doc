@@ -1,12 +1,12 @@
 import 'package:dartz/dartz.dart';
 import 'package:dio/dio.dart';
 
-import '../../../../config/errors/failures/failure.dart';
-import '../../../../config/errors/failures/server_failure.dart';
-import '../../../../config/services/network/api_config.dart';
-import '../../../../config/services/network/i_api_consumer.dart';
-import '../models/login_request_model.dart';
-import '../models/login_response_model.dart';
+import '../../../../../config/errors/failures/failure.dart';
+import '../../../../../config/errors/failures/server_failure.dart';
+import '../../../../../config/services/network/api_config.dart';
+import '../../../../../config/services/network/i_api_consumer.dart';
+import '../../models/sign_in_request_model.dart';
+import '../../models/sign_in_response_model.dart';
 import 'i_sign_in_repo.dart';
 
 class SignInRepoImpl implements ISignInRepo {
@@ -15,8 +15,8 @@ class SignInRepoImpl implements ISignInRepo {
   final IApiConsumer _client;
 
   @override
-  Future<Either<Failure, LoginResponseModel>> signIn(
-    LoginRequestModel model,
+  Future<Either<Failure, SignInResponseModel>> signIn(
+    SignInRequestModel model,
   ) async {
     try {
       final response = await _client.post(
@@ -24,7 +24,7 @@ class SignInRepoImpl implements ISignInRepo {
         body: model.toJson(),
       );
 
-      final LoginResponseModel responseModel = LoginResponseModel().fromJson(
+      final SignInResponseModel responseModel = SignInResponseModel().fromJson(
         response.data as Map<String, dynamic>,
       );
 

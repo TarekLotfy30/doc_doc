@@ -1,30 +1,30 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-import '../../../../config/routing/app_routes_name.dart';
-import '../../../../core/constants/app_duration.dart';
-import '../../../../core/helpers/classes/app_logger.dart';
-import '../../../../core/helpers/classes/app_navigation.dart';
-import '../../../../core/widgets/app_custom_text.dart';
-import '../../../../core/widgets/app_dialog.dart';
-import '../../../../core/widgets/app_loading_indicator.dart';
-import '../../../../core/widgets/app_snack_bar.dart';
-import '../../controller/cubit/sign_in_cubit.dart';
-import '../../data/models/login_request_model.dart';
+import '../../../../../config/routing/app_routes_name.dart';
+import '../../../../../core/constants/app_duration.dart';
+import '../../../../../core/helpers/classes/app_logger.dart';
+import '../../../../../core/helpers/classes/app_navigation.dart';
+import '../../../../../core/widgets/app_custom_text.dart';
+import '../../../../../core/widgets/app_dialog.dart';
+import '../../../../../core/widgets/app_loading_indicator.dart';
+import '../../../../../core/widgets/app_snack_bar.dart';
+import '../../../controller/sign_in_cubit/sign_in_cubit.dart';
+import '../../../data/models/sign_in_request_model.dart';
 import 'login_footer.dart';
 import 'login_form_section.dart';
 import 'or_sign_in_divider.dart';
 import 'social_sign_in_buttons.dart';
 import 'welcome_header.dart';
 
-class LoginViewBody extends StatefulWidget {
-  const LoginViewBody({super.key});
+class SignInViewBody extends StatefulWidget {
+  const SignInViewBody({super.key});
 
   @override
-  State<LoginViewBody> createState() => _LoginViewBodyState();
+  State<SignInViewBody> createState() => _SignInViewBodyState();
 }
 
-class _LoginViewBodyState extends State<LoginViewBody> {
+class _SignInViewBodyState extends State<SignInViewBody> {
   late final TextEditingController _emailController;
   late final TextEditingController _passwordController;
   late final GlobalKey<FormState> _formKey;
@@ -65,7 +65,7 @@ class _LoginViewBodyState extends State<LoginViewBody> {
 
     if (_formKey.currentState?.validate() ?? false) {
       await signInCubit.signIn(
-        LoginRequestModel(
+        SignInRequestModel(
           email: _emailController.text,
           password: _passwordController.text,
         ),
@@ -87,7 +87,7 @@ class _LoginViewBodyState extends State<LoginViewBody> {
       listener: _blocListener,
       child: Form(
         key: _formKey,
-        child: Column(  
+        child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             // 1. Logo and Welcome Texts

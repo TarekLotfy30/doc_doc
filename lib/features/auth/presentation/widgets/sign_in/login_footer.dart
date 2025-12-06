@@ -1,14 +1,16 @@
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 
-import '../../../../core/helpers/extensions/theme_extension.dart';
+import '../../../../../config/routing/app_routes_name.dart';
+import '../../../../../core/helpers/classes/app_navigation.dart';
+import '../../../../../core/helpers/extensions/theme_extension.dart';
 
 class LoginFooter extends StatelessWidget {
   const LoginFooter({super.key});
 
   /// Handles the tap action for terms/privacy links.
-  void _handleTap(String linkName) {
-    // In a real app, this would navigate to the respective page or open a URL.
+  Future<void> _handleTap(BuildContext context, String linkName) async {
+    await AppNavigation.navigateTo(context, linkName);
   }
 
   /// Creates a tappable TextSpan for links.
@@ -20,18 +22,23 @@ class LoginFooter extends StatelessWidget {
     return TextSpan(
       text: text,
       style: context.textTheme.bodyLarge?.copyWith(
-        fontSize: 11,
+        fontSize: 14,
         height: 1.5,
         color: context.colorScheme.primary,
-        fontWeight: FontWeight.bold, // Bolder link for better visibility
+        fontWeight: FontWeight.bold,
       ),
-      recognizer: TapGestureRecognizer()..onTap = () => _handleTap(linkName),
+      recognizer: TapGestureRecognizer()
+        ..onTap = () => _handleTap(context, linkName),
     );
   }
 
   @override
   Widget build(BuildContext context) {
     return Column(
+      mainAxisSize: MainAxisSize.min,
+      crossAxisAlignment: CrossAxisAlignment.center,
+      mainAxisAlignment: MainAxisAlignment.center,
+      spacing: 24,
       children: [
         // Terms and Conditions Text
         Padding(
@@ -70,8 +77,6 @@ class LoginFooter extends StatelessWidget {
             ),
           ),
         ),
-        const SizedBox(height: 24),
-
         // Sign Up Link
         Padding(
           padding: const EdgeInsets.symmetric(horizontal: 64),
@@ -92,7 +97,7 @@ class LoginFooter extends StatelessWidget {
                   _linkTextSpan(
                     context: context,
                     text: 'Sign Up',
-                    linkName: 'Sign Up',
+                    linkName: AppRoutesName.signUpView,
                   ),
                 ],
               ),

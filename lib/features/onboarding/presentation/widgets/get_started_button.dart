@@ -11,10 +11,7 @@ class GetStartedButton extends StatelessWidget {
   Widget build(BuildContext context) {
     return ElevatedButton(
       onPressed: () async {
-        await AppNavigation.navigateTo(
-          context,
-          AppRoutesName.loginView,
-        );
+        await AppNavigation.navigateTo(context, AppRoutesName.signInView);
       },
       child: const CustomText(data: 'Get Started'),
     );

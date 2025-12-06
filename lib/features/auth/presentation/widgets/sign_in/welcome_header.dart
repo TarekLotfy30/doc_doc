@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 
-import '../../../../core/helpers/extensions/theme_extension.dart';
-import '../../../../core/widgets/app_custom_text.dart';
-import '../../../onboarding/presentation/widgets/doc_doc_logo_and_text.dart';
+import '../../../../../core/helpers/extensions/theme_extension.dart';
+import '../../../../../core/widgets/app_custom_text.dart';
+import '../../../../onboarding/presentation/widgets/doc_doc_logo_and_text.dart';
 
 class WelcomeHeader extends StatelessWidget {
   const WelcomeHeader({super.key});

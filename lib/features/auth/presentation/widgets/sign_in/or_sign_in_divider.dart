@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-import '../../../../core/helpers/extensions/theme_extension.dart';
-import '../../../../core/widgets/app_custom_text.dart';
+import '../../../../../core/helpers/extensions/theme_extension.dart';
+import '../../../../../core/widgets/app_custom_text.dart';
 
 class OrSignInDivider extends StatelessWidget {
   const OrSignInDivider({super.key});
