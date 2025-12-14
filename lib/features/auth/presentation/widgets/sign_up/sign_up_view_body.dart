@@ -56,7 +56,7 @@ class _SignUpViewBodyState extends State<SignUpViewBody> {
       await AppSnackBar.showSuccess(context, state.message);
       await AppNavigation.navigateToAndClearStack(
         context,
-        AppRoutesName.homeView,
+        AppRoutesName.bottomNavBarView,
       );
     }
   }

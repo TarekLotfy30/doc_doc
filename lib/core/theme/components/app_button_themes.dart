@@ -208,13 +208,13 @@ abstract final class AppButtonThemes {
     return FloatingActionButtonThemeData(
       backgroundColor: color.primary,
       foregroundColor: color.onPrimary,
-      elevation: AppElevation.button,
-      focusElevation: AppElevation.button * 1.2,
-      hoverElevation: AppElevation.button * 1.5,
-      highlightElevation: AppElevation.button * 2,
-      disabledElevation: 0,
-      shape: const CircleBorder(),
-      enableFeedback: true,
+      elevation: 0,
+      highlightElevation: AppElevation.highlightFab,
+      disabledElevation: AppElevation.button,
+      shape: RoundedSuperellipseBorder(
+        borderRadius: BorderRadius.circular(23.r),
+        side: BorderSide(color: color.onPrimary, width: 4.w),
+      ),
     );
   }
 

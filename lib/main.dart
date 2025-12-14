@@ -6,6 +6,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_native_splash/flutter_native_splash.dart';
 
 import 'app/doc_doc_app.dart';
+import 'core/constants/app_constants.dart';
 import 'core/helpers/classes/app_logger.dart';
 import 'core/helpers/functions/configure_system_ui.dart';
 import 'core/helpers/functions/initialize_services.dart';
@@ -32,7 +33,7 @@ Future<void> main() async {
   runApp(
     EasyLocalization(
       supportedLocales: const [Locale('en', 'US')],
-      path: 'assets/translations',
+      path: AppConstant.translationsPath,
       fallbackLocale: const Locale('en', 'US'),
       child: const DocDocApp(),
     ),
