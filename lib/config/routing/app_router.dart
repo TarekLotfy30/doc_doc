@@ -12,6 +12,7 @@ import '../../features/auth/controller/sign_in_cubit/sign_in_cubit.dart';
 import '../../features/auth/controller/sign_up_cubit/sign_up_cubit.dart';
 import '../../features/auth/presentation/screens/sign_in_view.dart';
 import '../../features/auth/presentation/screens/sign_up_view.dart';
+import '../../features/bottom_nav_bar/presentation/screen/bottom_nav_bar.dart';
 import '../../features/home/presentation/screens/home_view.dart';
 import '../../features/onboarding/presentation/screen/onboarding_screen.dart';
 import '../di/register_dependencies.dart';
@@ -51,6 +52,9 @@ class AppRouter {
           ),
           forcedType: RouteType.fade,
         );
+
+      case AppRoutesName.bottomNavBarView:
+        return _build(child: const BottomNavBar());
 
       case AppRoutesName.homeView:
         return _build(child: const HomeView());

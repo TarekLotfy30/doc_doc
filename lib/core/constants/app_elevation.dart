@@ -44,11 +44,13 @@ abstract final class AppElevation {
   /// Elevated/filled buttons
   static const double elevatedButton = _sm;
 
-  /// DropDown Menu 
-static const double dropDownMenu = _sm;
+  /// DropDown Menu
+  static const double dropDownMenu = _sm;
 
   /// Floating action button
   static const double fab = _lg;
+
+  static const double highlightFab = _xxl;
 
   /// App bar in default state
   static const double appBar = _none;

@@ -8,18 +8,7 @@ abstract final class AppIcons {
   // ----------------------------- Material Icons ------------------------------
 
   // Authentication & User
-  /// Email icon for login/signup forms
-  static const IconData email = Icons.email_outlined;
-
-  /// Password icon for secure input fields
-  static const IconData password = Icons.lock_outline;
-
-  static const IconData checkIcon = Icons.check_circle;
-
-  /// Show password icon
   static const IconData visibility = Icons.visibility_outlined;
-
-  /// Hide password icon
   static const IconData visibilityOff = Icons.visibility_off_outlined;
 
   /// User profile icon
@@ -41,14 +30,6 @@ abstract final class AppIcons {
   /// Forward navigation arrow
   static const IconData forward = Icons.arrow_forward_ios_rounded;
 
-  /// Home icon
-  static const IconData home = Icons.home_outlined;
-
-  /// Home icon (filled)
-  static const IconData homeFilled = Icons.home;
-
-  /// Search icon
-  static const IconData search = Icons.search_rounded;
 
   /// Menu icon
   static const IconData menu = Icons.menu_rounded;
@@ -190,24 +171,18 @@ abstract final class AppIcons {
   /// Light mode icon
   static const IconData lightMode = Icons.light_mode_outlined;
 
-  // ----------------------------- Custom SVG Icons ----------------------------
-
   // Navigation Arrows
-  /// Left arrow for navigation
-  static const String leftArrow = 'assets/svgs/icons/left_arrow.svg';
 
-  /// Right arrow for navigation
-  static const String rightArrow = 'assets/svgs/icons/right_arrow.svg';
+  // --------------------------- Social Media Icons --------------------------
+  static const String google = 'assets/icons/auth/google.svg';
+  static const String apple = 'assets/icons/auth/apple.svg';
+  static const String facebook = 'assets/icons/auth/facebook.svg';
 
-  // Social Media Icons
-  /// Google logo for social login
-  static const String google = 'assets/icons/google.svg';
-
-  /// Apple logo for social login
-  static const String apple = 'assets/icons/apple.svg';
-
-  /// Facebook logo for social login
-  static const String facebook = 'assets/icons/facebook.svg';
+  // --------------------------- Bottom Nav Icons --------------------------
+  static const String home = 'assets/icons/bottom_nav_bar/home.svg';
+  static const String message = 'assets/icons/bottom_nav_bar/message.svg';
+  static const String search = 'assets/icons/bottom_nav_bar/search.svg';
+  static const String calender = 'assets/icons/bottom_nav_bar/calender.svg';
 
   // Brand Icons
   /// App logo icon

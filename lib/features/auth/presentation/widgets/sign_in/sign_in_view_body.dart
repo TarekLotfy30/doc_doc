@@ -3,7 +3,6 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../../../config/routing/app_routes_name.dart';
 import '../../../../../core/constants/app_duration.dart';
-import '../../../../../core/helpers/classes/app_logger.dart';
 import '../../../../../core/helpers/classes/app_navigation.dart';
 import '../../../../../core/widgets/app_custom_text.dart';
 import '../../../../../core/widgets/app_dialog.dart';
@@ -11,9 +10,9 @@ import '../../../../../core/widgets/app_loading_indicator.dart';
 import '../../../../../core/widgets/app_snack_bar.dart';
 import '../../../controller/sign_in_cubit/sign_in_cubit.dart';
 import '../../../data/models/sign_up/sign_in_request_model.dart';
+import 'or_sign_in_divider.dart';
 import 'sign_in_footer.dart';
 import 'sign_in_form_section.dart';
-import 'or_sign_in_divider.dart';
 import 'social_sign_in_buttons.dart';
 import 'welcome_header.dart';
 
@@ -48,18 +47,15 @@ class _SignInViewBodyState extends State<SignInViewBody> {
       if (context.mounted) {
         await AppNavigation.navigateToAndClearStack(
           context,
-          AppRoutesName.homeView,
+          AppRoutesName.bottomNavBarView,
         );
       }
     }
   }
 
   Future<void> _loginButtonPress(BuildContext context) async {
-    Logger.debug('Login button pressed', 'LoginViewBody');
-    final signInCubit = BlocProvider.of<SignInCubit>(context);
-
     if (formKey.currentState?.validate() ?? false) {
-      await signInCubit.signIn(
+      await BlocProvider.of<SignInCubit>(context).signIn(
         SignInRequestModel(
           email: emailController.text,
           password: passwordController.text,
